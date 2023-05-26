@@ -4,6 +4,9 @@ import { useFonts } from 'expo-font';
 import { SplashScreen, Stack } from 'expo-router';
 import { useEffect } from 'react';
 import { useColorScheme } from 'react-native';
+import { extendTheme, NativeBaseProvider } from 'native-base';
+
+const LinearGradient = require('expo-linear-gradient').LinearGradient
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -35,17 +38,27 @@ export default function RootLayout() {
   );
 }
 
+const config = {
+  useSystemColorMode: false,
+  initialColorMode: 'dark',
+  dependencies: {
+    'linear-gradient': LinearGradient,
+  }
+};
+
+const customTheme = extendTheme({ config });
+
 function RootLayoutNav() {
   const colorScheme = useColorScheme();
 
   return (
-    <>
+    <NativeBaseProvider theme={customTheme}>
       <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-        <Stack>
+        <Stack screenOptions={{ headerShown: false }}>
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
           <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
         </Stack>
       </ThemeProvider>
-    </>
+    </NativeBaseProvider>
   );
 }

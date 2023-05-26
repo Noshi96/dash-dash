@@ -21,10 +21,12 @@ export default function TabLayout() {
     <Tabs
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
+        headerShown: false,
       }}>
       <Tabs.Screen
         name="index"
         options={{
+          headerShown: true,
           title: 'Tab One',
           tabBarIcon: ({ color }) => <TabBarIcon name="facebook-f" color={color} />,
           headerRight: () => (

@@ -5,11 +5,11 @@ import { getCategoryBtnStyles, getGameBtnStyles } from './GameSearchModal.stylin
 import { GAMES_MOCK } from './GameSearchModal.mock';
 import { GameCategory, IGame } from './GameSearchModal.models';
 import GameSettingSelectBox from './components/GameSettingSelectBox';
-import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 const GameSearchModal = () => {
   const screenHeight = Dimensions.get('window').height;
-  const themeColor = 'green';
+  const themeColor = 'indigo';
 
   const elementInLine = 3;
   const elementInLineCalulated = 100 / elementInLine + '%';
@@ -28,10 +28,20 @@ const GameSearchModal = () => {
   const [gamesSelectedIds, setGamesSelectedIds] = useState<string[]>([]);
   const [selectedGames, setSelectedGames] = useState<IGame[]>([]);
 
-  // seatchInput
+  // searchInput
   const [searchString, setSearchString] = useState<string>('');
-  const filtedGamesByString = (): IGame[] => {
-    return selectableGames.filter(({name, shortName}) => [name, shortName].includes(searchString))
+  const filtedGamesByStringAndDuplicatesRemoved = (): IGame[] => {
+    const filteredGames = selectableGames.filter(({ name, shortName }) => {
+      const keysToSearch = [name, shortName];
+      return keysToSearch.some(key => key?.toLowerCase().includes(searchString.toLowerCase()));
+    })
+
+    const selectedGamesIds = selectedGames.map(game => game.id);
+
+    return [
+      ...selectedGames,
+      ...(filteredGames.filter(g => !selectedGamesIds.includes(g.id)))
+    ];
   }
 
 
@@ -110,7 +120,7 @@ const GameSearchModal = () => {
                    placeholderTextColor={`${themeColor}.100`}
                    borderColor={`${themeColor}.200`}
 
-                   _focus={{borderColor: '#ffffffcc', outlineColor: 'transparent'}}
+                   _focus={{borderColor: '#ffffffcc', outlineColor: '#ffffffcc'}}
                    InputLeftElement={<Icon as={<MaterialCommunityIcons name="magnify" />} size={4} ml="2" color={`${themeColor}.200`} />}
                    InputRightElement={<Icon as={<MaterialCommunityIcons name="close" />} size={4} mr="2" color={`${themeColor}.200`}
                     onPress={() => {setSearchString('')}}
@@ -118,15 +128,12 @@ const GameSearchModal = () => {
                    placeholder="lub wyszukaj 😄"
                    value={searchString}
                    onChange={(event) => {
-                     console.log(event.nativeEvent.text)
                      setSearchString(event.nativeEvent.text)
-                     // searchString(event.target.value);
                    }}
             />
 
             <HStack display={'flex'} flexWrap={'wrap'} alignItems={'flex-start'} justifyContent={'flex-start'} w={'100%'}>
-              {(searchString !== '' ? [...filtedGamesByString(), ...selectedGames] : selectableGames).map((game) => {
-
+              {(searchString ? [...filtedGamesByStringAndDuplicatesRemoved()] : selectableGames).map((game) => {
                 return (
                   <Box width={elementInLineCalulated} alignItems={'center'} justifyContent={'center'} mt={3}
                      key={game.id}>

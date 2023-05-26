@@ -70,8 +70,8 @@ const EventModal = () => {
         </HStack>
       </Box>
 
-      <LinearGradient colors={['#fdfd96', 'rgb(96, 165, 250)']}>
-      {/*<LinearGradient colors={['#fdfd96', '#B34240']}>*/}
+      {/*<LinearGradient colors={['#fdfd96', 'rgb(96, 165, 250)']}>*/}
+      <LinearGradient colors={['#fdfd96', '#B34240']}>
         <Box p={6} pb={30} _text={{ color: 'red.900' }} minHeight={modalContentHeight}>
           <Heading size="lg" color={'red.900'}>Siatkówka pod palemką</Heading>
           <HStack justifyContent="flex-start" mt={1}>

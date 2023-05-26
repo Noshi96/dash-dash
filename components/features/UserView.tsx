@@ -4,7 +4,7 @@ import EditableIconsSection from '../shared/EditableIconsSection';
 
 const UserView = () => {
   const screenHeight = Dimensions.get('window').height;
-  const themeColor = 'blue';
+  const themeColor = 'amber';
 
   return (
     <Box bgColor={'#010101'} minHeight={screenHeight} p={6}>

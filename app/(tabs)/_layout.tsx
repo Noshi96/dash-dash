@@ -26,23 +26,8 @@ export default function TabLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          headerShown: true,
           title: 'Tab One',
           tabBarIcon: ({ color }) => <TabBarIcon name="facebook-f" color={color} />,
-          headerRight: () => (
-            <Link href="/modal" asChild>
-              <Pressable>
-                {({ pressed }) => (
-                  <FontAwesome
-                    name="info-circle"
-                    size={25}
-                    color={Colors[colorScheme ?? 'light'].text}
-                    style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
-                  />
-                )}
-              </Pressable>
-            </Link>
-          ),
         }}
       />
       <Tabs.Screen

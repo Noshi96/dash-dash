@@ -36,11 +36,9 @@ const GameSearchModal = () => {
       return keysToSearch.some(key => key?.toLowerCase().includes(searchString.toLowerCase()));
     })
 
-    const selectedGamesIds = selectedGames.map(game => game.id);
-
     return [
       ...selectedGames,
-      ...(filteredGames.filter(g => !selectedGamesIds.includes(g.id)))
+      ...(filteredGames.filter(g => !gamesSelectedIds.includes(g.id)))
     ];
   }
 

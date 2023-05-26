@@ -7,7 +7,6 @@ export const GameCategories = [ GameCategory.ESport, GameCategory.Sport ];
 
 export interface IGame {
   id: string;
-  selected?: boolean;
   name: string;
   shortName?: string;
   category: GameCategory;
@@ -20,5 +19,4 @@ export interface IGameType {
   id: string;
   name: string;
   maxPlayers?: number;
-  selected?: boolean;
 }

@@ -10,11 +10,11 @@ export const GAMES_MOCK: IGame[] = [
     levels: ['open', 'iron', 'silver', 'gold', 'platinium', 'diamond', 'master', 'grandmaster', 'challanger'],
     gameTypes: [
       { id: '1', name: 'aram', maxPlayers: 5 },
-      { id: '2', name: 'solo / duo', maxPlayers: 5 },
+      { id: '2', name: 'solo / duo', maxPlayers: 2 },
       { id: '3', name: 'flex', maxPlayers: 5 },
       { id: '4', name: 'normal', maxPlayers: 5 },
       { id: '5', name: 'draft', maxPlayers: 5 },
-      { id: '6', name: 'custom', maxPlayers: 5 },
+      { id: '6', name: 'custom', maxPlayers: 10 },
     ],
   },
   {

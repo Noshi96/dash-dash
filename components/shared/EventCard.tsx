@@ -9,7 +9,7 @@ const EventCard = () => {
     <Box w="100%" rounded="lg" overflow="hidden" borderColor="coolGray.800" borderWidth="5" backgroundColor="gray.700">
       <Box>
         <Link href="/modal">
-          <Image source={require('../../assets/eventCovers/volleyballcover.png')} style={styles.image}/>
+          <Image source={require('../../assets/eventCovers/volleyballcover.png')} style={styles.image} alt={'img'}/>
         </Link>
 
         <Button

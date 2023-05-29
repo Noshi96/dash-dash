@@ -4,7 +4,8 @@ import EditableIconsSection from '../shared/EditableIconsSection';
 
 const UserView = () => {
   const screenHeight = Dimensions.get('window').height;
-  const themeColor = 'amber';
+  // const theme =  useContext(Theme);
+  const theme = { color: 'red'};
 
   return (
     <Box bgColor={'#010101'} minHeight={screenHeight} p={6}>
@@ -17,10 +18,10 @@ const UserView = () => {
         </Avatar>
         <Center my={6} p={6}>
           <Heading size={'lg'}> Golden Retriever </Heading>
-          <Text fontSize="md" color={`${themeColor}.100`} fontWeight="500">
+          <Text fontSize="md" color={`${theme.color}.100`} fontWeight="500">
             Niszczyciel światów
           </Text>
-          <Box bgColor={`${themeColor}.600`} rounded="lg" p={6} mt={6}>
+          <Box bgColor={`${theme.color}.600`} rounded="lg" p={6} mt={6}>
             <Text fontSize="md" color={"white"} fontWeight="500" textAlign={'left'}>
               Pies domowy (Canis familiaris) to udomowiony ssak z rzędu ssaków drapieżnych z rodziny psowatych.
               Jest częstym towarzyszem życia człowieka.
@@ -32,13 +33,13 @@ const UserView = () => {
 
       <Box
         p={6}
-        bgColor={`${themeColor}.600`} rounded="lg" minHeight={20} mt={5}
+        bgColor={`${theme.color}.600`} rounded="lg" minHeight={20} mt={5}
         display={'flex'} alignItems={'center'} justifyContent={'center'}
       >
         <Heading size={'md'} color={'white'} width={'100%'}>Rozegrane Gry </Heading>
 
         <HStack justifyContent="space-between" mt={6} mb={3} space={12}>
-          <Box h="24" w={24} bg={`${themeColor}.500`} rounded="md" shadow={3} alignItems={'center'} justifyContent={'center'}>
+          <Box h="24" w={24} bg={`${theme.color}.500`} rounded="md" shadow={3} alignItems={'center'} justifyContent={'center'}>
             <Text fontSize="lg" color={"white"} fontWeight="700" textAlign={'center'}>
               127
             </Text>
@@ -47,7 +48,7 @@ const UserView = () => {
             </Text>
           </Box>
 
-          <Box h="24" w={24} bg={`${themeColor}.500`} rounded="md" shadow={3} alignItems={'center'} justifyContent={'center'}>
+          <Box h="24" w={24} bg={`${theme.color}.500`} rounded="md" shadow={3} alignItems={'center'} justifyContent={'center'}>
             <Text fontSize="lg" color={"white"} fontWeight="700" textAlign={'center'}>
               24
             </Text>
@@ -60,21 +61,21 @@ const UserView = () => {
 
       <Box
         p={6}
-        bg={`${themeColor}.700`} rounded="lg" mt={5}
+        bg={`${theme.color}.700`} rounded="lg" mt={5}
       >
         <EditableIconsSection headerText={'Kontakt'}></EditableIconsSection>
       </Box>
 
       <Box
         p={6}
-        bg={`${themeColor}.800`} rounded="lg" mt={5}
+        bg={`${theme.color}.800`} rounded="lg" mt={5}
       >
         <EditableIconsSection headerText={'Giereczki'}></EditableIconsSection>
       </Box>
 
       <Box
         p={6}
-        bg={`${themeColor}.900`} rounded="lg" mt={5}
+        bg={`${theme.color}.900`} rounded="lg" mt={5}
       >
         <EditableIconsSection headerText={'Uprawiane sporty'}></EditableIconsSection>
       </Box>

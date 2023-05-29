@@ -7,15 +7,19 @@ import { GameCategory, IGame } from './GameSearchModal.models';
 import GameSettingSelectBox from './components/GameSettingSelectBox';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
+import ModalTopBar from '../modalsSharedComponents/ModalTopBar/ModalTopBar';
+import { ITopBarMenuAction } from '../modalsSharedComponents/ModalTopBar/ModalTopBar.models';
+
 const GameSearchModal = () => {
   const screenHeight = Dimensions.get('window').height;
-  const themeColor = 'indigo';
+  // const theme =  useContext(Theme);
+  const theme = { color: 'red'};
 
   const elementInLine = 3;
   const elementInLineCalulated = 100 / elementInLine + '%';
 
-  const categoryBtnStyles = getCategoryBtnStyles(themeColor);
-  const gameBtnStyles = getGameBtnStyles(themeColor);
+  const categoryBtnStyles = getCategoryBtnStyles(theme.color);
+  const gameBtnStyles = getGameBtnStyles(theme.color);
 
   const gamesMock = GAMES_MOCK;
 
@@ -71,18 +75,33 @@ const GameSearchModal = () => {
     setGamesSelectedIds(newGamesSelectedIndexes);
   }
 
+  const clearWholeState = () => {
+    setESportsSelected(false);
+    setSportsSelected(false);
+    setSelectedGames([]);
+  }
+
   useEffect(() => {
     // sets game objects based on ids array
     const gamesFiltered = selectableGames.filter(game => gamesSelectedIds.includes(game.id));
     setSelectedGames(gamesFiltered)
   }, [gamesSelectedIds]);
 
+  const menuActions: ITopBarMenuAction[] = [
+    {
+      name: 'wyczyść dane',
+      action: () => { clearWholeState() },
+      icon: <Icon marginLeft={1} as={MaterialCommunityIcons} name="eraser" color="white"></Icon>,
+    }
+  ];
 
   return (
     <Box bgColor={'#010101'} minHeight={screenHeight} p={6}>
+      <ModalTopBar title={'Wyszukiwarka gier'} menuActions={menuActions}/>
+
       <Box
-        p={6}
-        bgColor={`${themeColor}.600`} rounded="lg"
+        p={6} mt={6}
+        bgColor={`${theme.color}.600`} rounded="lg"
         display={'flex'} alignItems={'center'} justifyContent={'center'}
       >
         <Heading size={'md'} color={'white'} width={'100%'}>Wybierz kategorię</Heading>
@@ -106,7 +125,7 @@ const GameSearchModal = () => {
         <>
           <Box
             p={6}
-            bgColor={`${themeColor}.700`} rounded="lg" minHeight={20} mt={6}
+            bgColor={`${theme.color}.700`} rounded="lg" minHeight={20} mt={6}
             display={'flex'} alignItems={'center'} justifyContent={'center'} w={'100%'}
           >
 
@@ -115,12 +134,12 @@ const GameSearchModal = () => {
             <Input w={'90%'}
                    variant={'filled'}
                    style={{color: '#ffffffcc', fontWeight: '600', borderColor: '#ffffffcc' }}
-                   placeholderTextColor={`${themeColor}.100`}
-                   borderColor={`${themeColor}.200`}
+                   placeholderTextColor={`${theme.color}.100`}
+                   borderColor={`${theme.color}.200`}
 
                    _focus={{borderColor: '#ffffffcc', outlineColor: '#ffffffcc'}}
-                   InputLeftElement={<Icon as={<MaterialCommunityIcons name="magnify" />} size={4} ml="2" color={`${themeColor}.200`} />}
-                   InputRightElement={<Icon as={<MaterialCommunityIcons name="close" />} size={4} mr="2" color={`${themeColor}.200`}
+                   InputLeftElement={<Icon as={<MaterialCommunityIcons name="magnify" />} size={4} ml="2" color={`${theme.color}.200`} />}
+                   InputRightElement={<Icon as={<MaterialCommunityIcons name="close" />} size={4} mr="2" color={`${theme.color}.200`}
                     onPress={() => {setSearchString('')}}
                    />}
                    placeholder="lub wyszukaj 😄"
@@ -135,7 +154,7 @@ const GameSearchModal = () => {
                 return (
                   <Box width={elementInLineCalulated} alignItems={'center'} justifyContent={'center'} mt={3}
                      key={game.id}>
-                  <Button {...gameBtnStyles} borderColor={`${themeColor}.200`}
+                  <Button {...gameBtnStyles} borderColor={`${theme.color}.200`}
                           borderWidth={gamesSelectedIds.includes(game.id) ? 2 : 0}
                           onPress={() => toggleGameSelected(game)}>
                     <Text fontSize={12}>{game.shortName || game.name}</Text>
@@ -153,7 +172,7 @@ const GameSearchModal = () => {
           <VStack
             p={6}
             space={5}
-            bgColor={`${themeColor}.800`} rounded="lg" minHeight={20} mt={6}
+            bgColor={`${theme.color}.800`} rounded="lg" minHeight={20} mt={6}
             display={'flex'} alignItems={'center'} justifyContent={'center'}
           >
             <Heading size={'md'} color={'white'} mb={0}>Wybierz tryby i poziomy</Heading>
@@ -163,7 +182,7 @@ const GameSearchModal = () => {
                    key={game.id}>
                 <GameSettingSelectBox
                   game={game}
-                  themeColor={themeColor}
+                  themeColor={theme.color}
                   onSelectedField={handleSelectedField}
                 ></GameSettingSelectBox>
               </Box>

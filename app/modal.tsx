@@ -1,12 +1,9 @@
-import { StyleSheet } from 'react-native';
 import { View } from '../components/Themed';
-import EventModal from '../components/modals/EventModal';
-import GameSearchModal from '../components/modals/GameSearchModal/GameSearchModal';
+import EventModal from '../components/modals/EventModal/EventModal';
 
 const ModalScreen = () => {
   return (
     <View>
-      <GameSearchModal></GameSearchModal>
       <EventModal></EventModal>
     </View>
   )

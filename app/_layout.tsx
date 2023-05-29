@@ -57,6 +57,7 @@ function RootLayoutNav() {
         <Stack screenOptions={{ headerShown: false }}>
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
           <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
+          <Stack.Screen name="gameFinder" options={{ presentation: 'modal' }} />
         </Stack>
       </ThemeProvider>
     </NativeBaseProvider>

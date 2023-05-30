@@ -8,12 +8,13 @@ const EventCard = () => {
   return (
     <Box w="100%" rounded="lg" overflow="hidden" borderColor="coolGray.800" borderWidth="5" backgroundColor="gray.700">
       <Box>
-        <Link href="/modal">
-          <Image source={require('../../assets/eventCovers/volleyballcover.png')} style={styles.image} alt={'img'}/>
-        </Link>
+        <Box rounded={'lg'} shadow={'6'} style={styles.coverImageWrapper}>
+          <Image width={'container'} source={require('../../assets/eventCovers/volleyballcover.png')} style={styles.coverImage}
+                 alt={'eventimg'}/>
+        </Box>
 
         <Button
-          h={8}
+          h={12}
           variant="subtle"
           borderRadius={'12px'}
           position={'absolute'}
@@ -32,37 +33,46 @@ const EventCard = () => {
           </Badge>
         </HStack>
       </Box>
-      <Stack p="4">
-        <Stack space={2}>
-          <Heading size="md" >
-            Siatkówka pod palemką
-          </Heading>
-          <Text fontSize="xs" color={"#fdfd96"} fontWeight="500" mt="-1">
-            Organizator: Paweł Arows
-          </Text>
-        </Stack>
-        <Text mt={3}>24.01 poniedziałek 19:00 </Text>
-        <Text>Szkoła podstawowa nr 46. ul. Bogusława 7</Text>
+      <Link href="/modal">
+        <Stack p="4">
+          <Stack space={2}>
+            <Heading size="md" >
+              Siatkówka pod palemką
+            </Heading>
+            <Text fontSize="xs" color={"#fdfd96"} fontWeight="500" mt="-1">
+              Organizator: Paweł Arows
+            </Text>
+          </Stack>
+          <Text mt={3}>24.01 poniedziałek 19:00 </Text>
+          <Text>Szkoła podstawowa nr 46. ul. Bogusława 7</Text>
 
-        <HStack alignItems="center" justifyContent="space-between" mt={3}>
-          <HStack alignItems="center">
-            <Text color="warmGray.300" fontWeight="400" mr={2}>Poziom</Text>
-            <Badge colorScheme="success" variant={'outline'} rounded="6" mr={4}> Open </Badge>
+          <HStack alignItems="center" justifyContent="space-between" mt={3}>
+            <HStack alignItems="center">
+              <Text color="warmGray.300" fontWeight="400" mr={2}>Poziom</Text>
+              <Badge colorScheme="success" variant={'outline'} rounded="6" mr={4}> Open </Badge>
+            </HStack>
+
+            <Text color="warmGray.300" fontWeight="400">Zawodnicy: 8/12</Text>
           </HStack>
-
-          <Text color="warmGray.300" fontWeight="400">Zawodnicy: 8/12</Text>
-        </HStack>
-      </Stack>
+        </Stack>
+      </Link>
     </Box>
   )
 }
 
 
 const styles = StyleSheet.create({
-  image: {
+  coverImageWrapper: {
+    minHeight: 180,
+    width: '100%',
+    height: 180,
+    // height: '10%',
+  },
+  coverImage: {
     resizeMode: 'cover',
     width: '100%',
-    height: 170,
+    height: '100%',
+    borderRadius: 6,
   },
 });
 

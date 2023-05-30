@@ -2,7 +2,7 @@ import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
 import { SplashScreen, Stack } from 'expo-router';
-import { useEffect } from 'react';
+import { createContext, useEffect } from 'react';
 import { useColorScheme } from 'react-native';
 import { extendTheme, NativeBaseProvider } from 'native-base';
 
@@ -47,19 +47,24 @@ const config = {
 };
 
 const customTheme = extendTheme({ config });
+const color = 'violet';
+export const Theme = createContext({color: color})
 
 function RootLayoutNav() {
   const colorScheme = useColorScheme();
 
   return (
     <NativeBaseProvider theme={customTheme}>
-      <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-        <Stack screenOptions={{ headerShown: false }}>
-          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-          <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
-          <Stack.Screen name="gameFinder" options={{ presentation: 'modal' }} />
-        </Stack>
-      </ThemeProvider>
+      <Theme.Provider value={{color: color}}>
+        <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+          <Stack screenOptions={{ headerShown: false }}>
+            <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+            <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
+            <Stack.Screen name="gameFinder" options={{ presentation: 'modal' }} />
+          </Stack>
+        </ThemeProvider>
+      </Theme.Provider>
+
     </NativeBaseProvider>
   );
 }

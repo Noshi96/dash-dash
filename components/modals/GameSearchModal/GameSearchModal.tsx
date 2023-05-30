@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Box, Button, Heading, HStack, Icon, Input, Text, VStack } from 'native-base';
 import { Dimensions } from 'react-native';
 import { getCategoryBtnStyles, getGameBtnStyles } from './GameSearchModal.styling';
@@ -9,11 +9,11 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import ModalTopBar from '../modalsSharedComponents/ModalTopBar/ModalTopBar';
 import { ITopBarMenuAction } from '../modalsSharedComponents/ModalTopBar/ModalTopBar.models';
+import { Theme } from '../../../app/_layout';
 
 const GameSearchModal = () => {
   const screenHeight = Dimensions.get('window').height;
-  // const theme =  useContext(Theme);
-  const theme = { color: 'red'};
+  const theme =  useContext(Theme);
 
   const elementInLine = 3;
   const elementInLineCalulated = 100 / elementInLine + '%';
@@ -137,7 +137,7 @@ const GameSearchModal = () => {
                    placeholderTextColor={`${theme.color}.100`}
                    borderColor={`${theme.color}.200`}
 
-                   _focus={{borderColor: '#ffffffcc', outlineColor: '#ffffffcc'}}
+                   _focus={{borderColor: '#ffffffcc'}}
                    InputLeftElement={<Icon as={<MaterialCommunityIcons name="magnify" />} size={4} ml="2" color={`${theme.color}.200`} />}
                    InputRightElement={<Icon as={<MaterialCommunityIcons name="close" />} size={4} mr="2" color={`${theme.color}.200`}
                     onPress={() => {setSearchString('')}}

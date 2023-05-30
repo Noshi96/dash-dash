@@ -1,11 +1,13 @@
 import { Avatar, Box, Center, Heading, HStack, Image, Text } from 'native-base';
 import { Dimensions } from 'react-native';
 import EditableIconsSection from '../shared/EditableIconsSection';
+import { Theme } from '../../app/_layout';
+import { useContext } from 'react';
 
 const UserView = () => {
   const screenHeight = Dimensions.get('window').height;
-  // const theme =  useContext(Theme);
-  const theme = { color: 'red'};
+  const theme = useContext(Theme);
+  // const theme = { color: 'red'};
 
   return (
     <Box bgColor={'#010101'} minHeight={screenHeight} p={6}>

@@ -1,15 +1,19 @@
-import { StyleSheet } from 'react-native';
-import { Box, Stack } from 'native-base';
+import { SafeAreaView, StatusBar, StyleSheet } from 'react-native';
+import { Box, ScrollView, Stack } from 'native-base';
 import EventCard from '../../components/shared/EventCard';
 
 
 const TabOneScreen = () => {
   return (
-    <Stack style={styles.container} p={6} space={8}>
-      <EventCard></EventCard>
-      <EventCard></EventCard>
-      <EventCard></EventCard>
-    </Stack>
+    <ScrollView>
+      <SafeAreaView style={{ paddingTop: StatusBar.currentHeight }}>
+        <Stack style={styles.container} p={6} space={8}>
+          <EventCard></EventCard>
+          <EventCard></EventCard>
+          <EventCard></EventCard>
+        </Stack>
+      </SafeAreaView>
+    </ScrollView>
   );
 }
 

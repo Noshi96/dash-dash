@@ -1,6 +1,7 @@
 import React from 'react';
 
 export interface IModalTopBarProps {
+  hasBackButton?: boolean;
   title?: string;
   menuActions?: ITopBarMenuAction[]
 }

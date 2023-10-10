@@ -96,8 +96,8 @@ const GameSearchModal = () => {
   ];
 
   return (
-    <Box bgColor={'#010101'} minHeight={screenHeight} p={6}>
-      <ModalTopBar title={'Wyszukiwarka gier'} menuActions={menuActions}/>
+    <Box bgColor={'#010101'} p={6}>
+      <ModalTopBar title={'Wyszukiwarka gier'} menuActions={menuActions} hasBackButton={false}/>
 
       <Box
         p={6} mt={6}
